@@ -19,13 +19,13 @@ const cardDisplay = () => {
         {countries.slice(0, 8).map((countrie, index) => 
                     <Card 
                     key={index}
-                    id={countrie.ccn3}
+                    id={countrie.cca3}
                     flag={countrie.flags.svg}
                     name={countrie.name.common}
                     population={countrie.population}
                     region={countrie.region}
                     capital={countrie.capital} 
-                     /> // Assuming Card component accepts a key prop
+                     /> 
                 )}
         </div>
         </>
