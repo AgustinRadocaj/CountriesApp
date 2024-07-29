@@ -38,21 +38,32 @@ const Detail = () => {
     console.log(countrie.borders)
     
     return (
-        <div>
-          <div> 
-            <div>{countrie.flag}</div>
+        <div className="grid grid-cols-2 gap-4">
+          <div className='flex flex-col p-16'> 
+            <button className='border-2 border-red-500 h-7 w-7'>Home</button>
+            <div className='border-2 border-red-500 h-80 w-96 mt-10'>{countrie.flag}</div>
           </div>
-          <div>
-            <div>{countrie.name?.common}</div>
-            { names.map(name => <div>{name}</div>)}
-            <div>{countrie.population}</div>
-            <div>{countrie.region}</div>
-            <div>{countrie.subregion}</div>
-            <div>{countrie.capital}</div> 
-            <div>{countrie.tld}</div>
-            { allCurrencies.map(currency => <div>{currency}</div>)}
-            { allLanguages.map(language => <div>{language}</div>)}
-            { countrie.borders?.map(border => <a href={`/${border}`}><div>{border}</div></a>)}
+          <div className='grid grid-rows-3 justify-center align-middle w-full border-2 border-red-500 '>
+            <div className='border-2 border-red-500'>
+              <div className='border-2 border-red-500'>{countrie.name?.common}</div>
+            </div>
+            <div className='grid grid-cols-2 gap-12'>
+              <div> 
+                { names.map(name => <div>{name}</div>)}
+                <div>{countrie.population}</div>
+                <div>{countrie.region}</div>
+                <div>{countrie.subregion}</div>
+              </div>
+              <div>
+                <div>{countrie.capital}</div> 
+                <div>{countrie.tld}</div>
+                { allCurrencies.map(currency => <div>{currency}</div>)}
+                { allLanguages.map(language => <div>{language}</div>)}
+              </div>
+            </div>
+            <div className='border-2 border-red-500 w-11/12'>
+            Border countries:{ countrie.borders?.map(border => <a href={`/${border}`}><div>{border}</div></a>)}
+            </div>
           </div>
         </div>
     );
