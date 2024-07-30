@@ -1,6 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
+import Link from "next/link";
 
 const Detail = () => {
     const [countrie, setCountrie] = useState({});
@@ -34,14 +35,15 @@ const Detail = () => {
         allLanguages.push(languages[key])
     }
 
-    console.log(allLanguages)
-    console.log(countrie.borders)
+ 
     
     return (
         <div className="grid grid-cols-2 gap-4">
           <div className='flex flex-col p-16'> 
-            <button className='border-2 border-red-500 h-7 w-7'>Home</button>
-            <div className='border-2 border-red-500 h-80 w-96 mt-10'>{countrie.flag}</div>
+            <Link href={'/'}><button className='hover:bg-slate-200 rounded-3xl h-10 w-16 text-lg'>Back</button></Link>
+            <div className='h-80 w-11/12 mt-10'>
+            <img src={countrie.flags?.svg} alt="flag" className="rounded-md content-baseline"></img>
+            </div>
           </div>
           <div className='grid grid-rows-3 justify-center align-middle w-full border-2 border-red-500 '>
             <div className='border-2 border-red-500'>
