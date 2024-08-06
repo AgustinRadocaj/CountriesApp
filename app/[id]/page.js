@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import Link from "next/link";
+import Navbar from '../components/navbar/Navbar';
 
 const Detail = () => {
     const [countrie, setCountrie] = useState({});
@@ -57,6 +58,8 @@ const Detail = () => {
 
     
     return (
+      <>
+      <Navbar></Navbar>
         <div className="grid grid-cols-2 gap-4 ">
           <div className='flex flex-col p-16'> 
             <Link href={'/'}><button className='hover:bg-slate-200 rounded-3xl h-10 w-16 text-lg'>Back</button></Link>
@@ -89,6 +92,7 @@ const Detail = () => {
             </div>
           </div>
         </div>
+        </>
     );
 };
 
