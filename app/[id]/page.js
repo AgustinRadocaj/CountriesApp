@@ -61,7 +61,7 @@ const Detail = () => {
           <div className='flex flex-col p-16'> 
             <Link href={'/'}><button className='hover:bg-slate-200 rounded-3xl h-10 w-16 text-lg'>Back</button></Link>
             <div className='h-80 w-11/12 mt-10'>
-            <img src={countrie.flags?.svg} alt="flag" className="rounded-md content-baseline"></img>
+            <img src={countrie.flags?.svg} alt="flag" className="rounded-md content-baseline h-80 w-11/12 object-cover"></img>
             </div>
           </div>
           <div className='grid grid-rows-3 justify-center align-middle w-full '>

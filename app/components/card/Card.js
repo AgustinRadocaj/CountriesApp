@@ -45,7 +45,7 @@ const card = ({id, flag, name, population, region, capital}) => {
         <>
         <Link href={`/${id}`}>
         <div className={`border-2 rounded-lg ${borderColor} w-56 h-72 hover:shadow-2xl ${shadowColor}`}>
-            <img src={flag} alt="flag" className="rounded-t-md w-full h-32"></img>
+            <img src={flag} alt="flag" className="rounded-t-md w-full h-32 object-cover"></img>
             <div className="px-4">
                 <h1 className="text-lg my-4">{name}</h1>
                 <div>
