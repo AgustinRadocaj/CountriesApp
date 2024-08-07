@@ -7,8 +7,9 @@ const cardDisplay = () => {
     const [countries, setCountries] = useState([]);
     const [filteredCountries, setFilteredCountries] = useState([]);
     const [search, setSearch] = useState("");
-    const [region, setRegion] = useState("All");
+    const [selectedRegions, setSelectedRegions] = useState("All");
     const [alfa, setAlfa] = useState("S");
+    const [population, setPopulation] = useState("S");
 
     const searchHandler = (event) => {
         const searchTerm = event.target.value;
@@ -20,27 +21,45 @@ const cardDisplay = () => {
     };
 
     const regionHandler = (event) => {
-        const selectedRegion = event.target.value;
-        setRegion(event.target.value);
-        if (selectedRegion === "All") {
-            setFilteredCountries(countries);
-        } else {
-            const filtered = countries.filter((country) => country.region === selectedRegion);
-            setFilteredCountries(filtered);
-        }
+        const selectedOptions = Array.from(event.target.selectedOptions).map(option => option.value);
+        setSelectedRegions(selectedOptions);
+        applyFilters(selectedOptions, alfa, population);
     };
-
-    
+   
     const alfaHandle = (event) => {
         const alfaValue = event.target.value;
         setAlfa(alfaValue);
+        applyFilters(selectedRegions, alfaValue, population);
+    };
 
-        if (alfaValue === "S") setFilteredCountries(countries);
-        if (alfaValue === "A") setFilteredCountries(countries.sort((a, b) => a.name.common.localeCompare(b.name.common)));
-        if (alfaValue === "D") setFilteredCountries(countries.sort((a, b) => b.name.common.localeCompare(a.name.common)));
-    }
+    const populationHandle = (event) => {
+        const populationValue = event.target.value;
+        setPopulation(populationValue);
+        applyFilters(selectedRegions, alfa, populationValue);
+    };
 
-
+    const applyFilters = (regions, alfaValue, populationValue) => {
+        let filtered = countries;
+    
+        if (regions.length > 0 && !regions.includes("All")) {
+            filtered = filtered.filter((country) => regions.includes(country.region));
+        }
+    
+        if (alfaValue === "A") {
+            filtered = filtered.sort((a, b) => a.name.common.localeCompare(b.name.common));
+        } else if (alfaValue === "D") {
+            filtered = filtered.sort((a, b) => b.name.common.localeCompare(a.name.common));
+        }
+    
+        if (populationValue === "A") {
+            filtered = filtered.sort((a, b) => a.population - b.population);
+        } else if (populationValue === "D") {
+            filtered = filtered.sort((a, b) => b.population - a.population);
+        }
+    
+        setFilteredCountries(filtered);
+    };
+    
     useEffect(() => {
         const fetchData = async () => {
             const response = await fetch('https://restcountries.com/v3.1/all');
@@ -60,10 +79,15 @@ const cardDisplay = () => {
             <option value="A">A-Z</option>
             <option value="D">Z-A</option>
         </select>
-        <select value={region} onChange={regionHandler}>
+        <select value={population} onChange={populationHandle}>
+            <option value="S">Population</option>
+            <option value="A">High</option>
+            <option value="D">Low</option>
+        </select>
+        <select value={selectedRegions} onChange={regionHandler}>
             <option value="All">All</option>
             <option value="Africa">Africa</option>
-            <option value="Antartic">Antartic</option>
+            <option value="Antarctic">Antartic</option>
             <option value="Americas">Americas</option>
             <option value="Asia">Asia</option>
             <option value="Europe">Europe</option>
