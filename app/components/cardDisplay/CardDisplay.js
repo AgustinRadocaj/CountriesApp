@@ -52,9 +52,9 @@ const cardDisplay = () => {
         }
     
         if (populationValue === "A") {
-            filtered = filtered.sort((a, b) => a.population - b.population);
-        } else if (populationValue === "D") {
             filtered = filtered.sort((a, b) => b.population - a.population);
+        } else if (populationValue === "D") {
+            filtered = filtered.sort((a, b) => a.population - b.population);
         }
     
         setFilteredCountries(filtered);
@@ -73,18 +73,32 @@ const cardDisplay = () => {
     return (
         <>
         <div className="flex justify-between h-20 mb-9 p-5">
-            <input type="text"placeholder="Search for a country..." value={search} onChange={searchHandler}/>
-        <select value={alfa} onChange={alfaHandle}>
+            <input
+            className="border w-2/6 border-black-500 rounded-lg p-2 " 
+            type="text"
+            placeholder="Search for a country..." 
+            value={search} 
+            onChange={searchHandler}/>
+        <select
+        className="border w-1/6 border-black-500 bg-white rounded-lg p-2" 
+        value={alfa} 
+        onChange={alfaHandle}>
             <option value="S">Alfabetico</option>
             <option value="A">A-Z</option>
             <option value="D">Z-A</option>
         </select>
-        <select value={population} onChange={populationHandle}>
+        <select 
+        className="border w-1/6 border-black-500 bg-white rounded-lg p-2"
+        value={population} 
+        onChange={populationHandle}>
             <option value="S">Population</option>
             <option value="A">High</option>
             <option value="D">Low</option>
         </select>
-        <select value={selectedRegions} onChange={regionHandler}>
+        <select 
+        className="border w-1/6 border-black-500 bg-white rounded-lg p-2"
+        value={selectedRegions} 
+        onChange={regionHandler}>
             <option value="All">All</option>
             <option value="Africa">Africa</option>
             <option value="Antarctic">Antartic</option>
