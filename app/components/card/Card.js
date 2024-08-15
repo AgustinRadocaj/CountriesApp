@@ -4,7 +4,7 @@ const card = ({id, flag, name, population, region, capital}) => {
     const borderRegion = (region) => {
         switch (region) {
             case "Africa":
-                return "border-black-500"
+                return "border-teal-500"
             case "Americas":
                 return "border-red-500"
             case "Asia":
@@ -22,7 +22,7 @@ const card = ({id, flag, name, population, region, capital}) => {
     const shadowRegion = (region) => {
         switch (region) {
           case "Africa":
-            return "hover:shadow-black-500";
+            return "hover:shadow-teal-500";
           case "Americas":
             return "hover:shadow-red-500";
           case "Asia":
