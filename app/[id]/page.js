@@ -1,8 +1,8 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
-import Link from "next/link";
 import Navbar from '../components/navbar/Navbar';
+import { useRouter } from 'next/navigation';
 
 const Detail = () => {
     const [countrie, setCountrie] = useState({});
@@ -12,6 +12,7 @@ const Detail = () => {
     const names = []
     const allCurrencies = []
     const allLanguages = []
+    const router = useRouter()
     
     useEffect(() => {
       const fetchData = async () => {
@@ -62,13 +63,16 @@ const Detail = () => {
       <Navbar></Navbar>
         <div className="grid grid-cols-2 gap-4 ">
           <div className='flex flex-col p-16'> 
-            <Link href={'/'}><button className='hover:bg-slate-200 rounded-3xl h-10 w-16 text-lg'>Back</button></Link>
+            <div className='flex gap-7'> 
+            <button onClick={() => router.push("/")} className='border-2 rounded-lg p-2 hover:bg-slate-800 hover:text-white'>Home</button>
+            <button onClick={() => router.back()} className='border-2 rounded-lg p-2 hover:bg-slate-800 hover:text-white'>Back</button>
+            </div>          
             <div className='h-80 w-11/12 mt-10'>
             <img src={countrie.flags?.svg} alt="flag" className="rounded-md content-baseline h-80 w-11/12 object-cover"></img>
             </div>
           </div>
           <div className='grid grid-rows-3 justify-center align-middle w-full '>
-            <div className='flex justify-center items-center'>
+            <div className='flex  items-center'>
               <div className='text-4xl'>{countrie.name?.common}</div>
             </div>
             <div className='grid grid-cols-2 gap-20 leading-10'>
@@ -87,7 +91,7 @@ const Detail = () => {
             </div>
             <div className='w-11/12 flex flex-row gap-2 h-10 mt-8'>
             <b>Border countries: </b>{borderCountries.map(country => {
-              return <Link key={country.code} href={`/${country.code}`}><div>{country.name}</div></Link>
+              return  <button onClick={() => router.push("/" + country.code)} className='border-2 rounded-lg p-2 hover:bg-slate-800 hover:text-white'>{country.name}</button>
             })}
             </div>
           </div>

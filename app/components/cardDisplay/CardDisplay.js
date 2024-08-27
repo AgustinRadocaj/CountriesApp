@@ -109,7 +109,7 @@ const cardDisplay = () => {
         </select>
         </div>
         <div className=" w-full h-auto px-10 grid grid-cols-4 gap-y-16 justify-items-center items-center">
-        {filteredCountries.slice(0, 8).map((countrie, index) => 
+        {filteredCountries.map((countrie, index) => 
                     <Card 
                     key={index}
                     id={countrie.cca3}

@@ -4,7 +4,7 @@ const card = ({id, flag, name, population, region, capital}) => {
     const borderRegion = (region) => {
         switch (region) {
             case "Africa":
-                return "border-teal-500"
+                return "border-amber-950"
             case "Americas":
                 return "border-red-500"
             case "Asia":
@@ -22,7 +22,7 @@ const card = ({id, flag, name, population, region, capital}) => {
     const shadowRegion = (region) => {
         switch (region) {
           case "Africa":
-            return "hover:shadow-teal-500";
+            return "hover:shadow-amber-950";
           case "Americas":
             return "hover:shadow-red-500";
           case "Asia":
@@ -44,7 +44,7 @@ const card = ({id, flag, name, population, region, capital}) => {
     return (
         <>
         <Link href={`/${id}`}>
-        <div className={`border-2 rounded-lg ${borderColor} w-56 h-72 hover:shadow-2xl ${shadowColor}`}>
+        <div className={`border-2 rounded-lg ${borderColor} w-60 h-80 hover:shadow-2xl ${shadowColor}`}>
             <img src={flag} alt="flag" className="rounded-t-md w-full h-32 object-cover"></img>
             <div className="px-4">
                 <h1 className="text-lg my-4">{name}</h1>
