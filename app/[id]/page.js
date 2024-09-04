@@ -73,7 +73,7 @@ const Detail = () => {
           </div>
           <div className='grid grid-rows-3 justify-center align-middle w-full '>
             <div className='flex  items-center'>
-              <div className='text-4xl'>{countrie.name?.common}</div>
+              <div className='text-4xl uppercase'>{countrie.name?.common}</div>
             </div>
             <div className='grid grid-cols-2 gap-20 leading-10'>
               <div> 
@@ -89,10 +89,12 @@ const Detail = () => {
                 <div><b>Languages: </b>{allLanguages.join(", ")}</div>
               </div>
             </div>
-            <div className='w-11/12 flex flex-row gap-2 h-10 mt-8'>
-            <b>Border countries: </b>{borderCountries.map(country => {
-              return  <button onClick={() => router.push("/" + country.code)} className='border-2 rounded-lg p-2 hover:bg-slate-800 hover:text-white'>{country.name}</button>
-            })}
+            <div className='w-11/12 flex flex-col items-center gap-2 h-auto'>
+              <b>Border countries:</b>
+              <div className='w-11/12'>{borderCountries.map(country => {
+              return  <button onClick={() => router.push("/" + country.code)} className='border-2 rounded-lg p-2 mx-2 my-2 hover:bg-slate-800 hover:text-white'>{country.name}</button>
+              })}
+              </div>
             </div>
           </div>
         </div>
