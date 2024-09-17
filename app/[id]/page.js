@@ -14,6 +14,7 @@ const Detail = () => {
     const allLanguages = []
     const router = useRouter()
     
+    
     useEffect(() => {
       const fetchData = async () => {
           await fetch('https://restcountries.com/v3.1/alpha/' + id)
@@ -41,6 +42,20 @@ const Detail = () => {
       }
       fetchData();
   }, [id]);
+
+  const randomCountrie = async () => {
+    const idArray = [];
+    await fetch('https://restcountries.com/v3.1/all')
+        .then(response => response.json())
+        .then(data => {
+          data.forEach((countrie) => idArray.push(countrie.cca3))
+        })
+
+    const randomId = idArray[Math.floor(Math.random() * idArray.length)]
+
+    router.push('/' + randomId)
+  }
+            
    
     const nativeNames = countrie.name?.nativeName
     for (const key in nativeNames) {
@@ -66,9 +81,10 @@ const Detail = () => {
             <div className='flex gap-7'> 
             <button onClick={() => router.push("/")} className='border-2 rounded-lg p-2 hover:bg-slate-800 hover:text-white'>Home</button>
             <button onClick={() => router.back()} className='border-2 rounded-lg p-2 hover:bg-slate-800 hover:text-white'>Back</button>
+            <button onClick={() => randomCountrie()} className='border-2 rounded-lg p-2 hover:bg-slate-800 hover:text-white'>Random</button>
             </div>          
             <div className='h-80 w-11/12 mt-10'>
-            <img src={countrie.flags?.svg} alt="flag" className="rounded-md content-baseline h-80 w-11/12 object-cover"></img>
+            <img src={countrie.flags?.svg} alt="flag" className="rounded-md content-baseline h-80 w-11/12 object-contain"></img>
             </div>
           </div>
           <div className='grid grid-rows-3 justify-center align-middle w-full '>
