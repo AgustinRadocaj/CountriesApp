@@ -44,7 +44,7 @@ const card = ({id, flag, name, population, region, capital}) => {
     return (
         <>
         <Link href={`/${id}`}>
-        <div className={`border-2 rounded-lg ${borderColor} w-60 h-80 hover:shadow-2xl ${shadowColor}`}>
+        <div data-test={`card-${id}`} className={`border-2 rounded-lg ${borderColor} w-60 h-80 hover:shadow-2xl ${shadowColor}`}>
             <img src={flag} alt="flag" className="rounded-t-md w-full h-32 object-cover"></img>
             <div className="px-4">
                 <h1 className="text-lg my-4">{name}</h1>

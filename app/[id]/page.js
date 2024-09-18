@@ -79,9 +79,9 @@ const Detail = () => {
         <div className="grid grid-cols-2 gap-4 ">
           <div className='flex flex-col p-16'> 
             <div className='flex gap-7'> 
-            <button onClick={() => router.push("/")} className='border-2 rounded-lg p-2 hover:bg-slate-800 hover:text-white'>Home</button>
-            <button onClick={() => router.back()} className='border-2 rounded-lg p-2 hover:bg-slate-800 hover:text-white'>Back</button>
-            <button onClick={() => randomCountrie()} className='border-2 rounded-lg p-2 hover:bg-slate-800 hover:text-white'>Random</button>
+            <button data-test='home-button' onClick={() => router.push("/")} className='border-2 rounded-lg p-2 hover:bg-slate-800 hover:text-white'>Home</button>
+            <button data-test='back-button' onClick={() => router.back()} className='border-2 rounded-lg p-2 hover:bg-slate-800 hover:text-white'>Back</button>
+            <button data-test='random-button' onClick={() => randomCountrie()} className='border-2 rounded-lg p-2 hover:bg-slate-800 hover:text-white'>Random</button>
             </div>          
             <div className='h-80 w-11/12 mt-10'>
             <img src={countrie.flags?.svg} alt="flag" className="rounded-md content-baseline h-80 w-11/12 object-contain"></img>
@@ -105,10 +105,10 @@ const Detail = () => {
                 <div><b>Languages: </b>{allLanguages.join(", ")}</div>
               </div>
             </div>
-            <div className='w-11/12 flex flex-col items-center gap-2 h-auto'>
+            <div data-test='border-buttons' className='w-11/12 flex flex-col items-center gap-2 h-auto'>
               <b>Border countries:</b>
               <div className='w-11/12'>{borderCountries.map(country => {
-              return  <button onClick={() => router.push("/" + country.code)} className='border-2 rounded-lg p-2 mx-2 my-2 hover:bg-slate-800 hover:text-white'>{country.name}</button>
+              return  <button data-test={`countrie-${country.code}`} onClick={() => router.push("/" + country.code)} className='border-2 rounded-lg p-2 mx-2 my-2 hover:bg-slate-800 hover:text-white'>{country.name}</button>
               })}
               </div>
             </div>
