@@ -74,12 +74,14 @@ const cardDisplay = () => {
         <>
         <div className="flex justify-between h-20 mb-9 p-5">
             <input
+            data-test='search-input'
             className="border w-2/6 border-black-500 rounded-lg p-2 " 
             type="text"
             placeholder="Search for a country..." 
             value={search} 
             onChange={searchHandler}/>
         <select
+        data-test='alpha-filter'
         className="border w-1/6 border-black-500 bg-white rounded-lg p-2" 
         value={alfa} 
         onChange={alfaHandle}>
@@ -96,6 +98,7 @@ const cardDisplay = () => {
             <option value="D">Low</option>
         </select>
         <select 
+        data-test='region-filter'
         className="border w-1/6 border-black-500 bg-white rounded-lg p-2"
         value={selectedRegions} 
         onChange={regionHandler}>

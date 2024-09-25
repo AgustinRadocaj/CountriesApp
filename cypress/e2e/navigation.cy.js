@@ -1,8 +1,8 @@
-describe('template spec', () => {
+describe('navigation', () => {
   beforeEach(() => {
     cy.visit('/')
   })
-  it('passes', () => {
+  it('paths', () => {
     cy.getDataTest('cards').within(() => {
       cy.getDataTest('card-CHE').click()
     })
